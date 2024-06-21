@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmls:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>商品入力画面</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/common.css}">
+</head>
+<body>
+	<h1>発注システム</h1>
+	<h2>商品入力画面</h2>
+	<div id="contents">
+		<p>商品の情報を入力して下さい。</p>
+		<form action="productResist" method="post" th:object="${productInputForm}">
+			<table>
+				<tr>
+					<th>商品番号</th>
+					<td><input name="pid" type="text" class="width-middle" th:value="*{pid}">
+						<span th:if="${#fields.hasErrors('pid')}" th:errors="*{pid}"></span>
+					</td>
+				</tr>
+				<tr>
+					<th>商品名</th>
+					<td><input name="pname" type="text" class="width-middle" th:value="*{pname}">
+						<span th:if="${#fields.hasErrors('pname')}" th:errors="*{pname}"></span>
+					</td>
+				</tr>
+				<tr>
+					<th>カテゴリ</th>
+					<td><input name="category" type="text" class="width-middle" th:value="*{category}">
+						<span th:if="${#fields.hasErrors('category')}" th:errors="*{category}"></span>
+					</td>
+				</tr>
+				<tr>
+					<th>単価</th>
+					<td><input name="price" type="text" class="width-middle" value="0" th:value="*{price}">
+						<span th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></span>
+					</td>
+				</tr>
+				<tr>
+					<th>在庫数</th>
+					<td><input name="stock" type="text" class="width-middle" value="0" th:value="*{stock}">
+						<span th:if="${#fields.hasErrors('stock')}" th:errors="*{stock}"></span>
+					</td>
+				</tr>
+			</table>
+			<div class="controlbox">
+				<input type="submit" value="送信" class="button">
+				<input type="reset" value="リセット" class="button">
+			</div>
+		</form>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmls:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>商品更新画面</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/common.css}">
+</head>
+<body>
+	<h1>発注システム</h1>
+	<h2>商品更新画面</h2>
+	<div id="contents">
+		<p>商品の更新情報を入力して下さい。</p>
+		<form action="productUpdate" method="post" th:object="${productUpdateForm}">
+			<table>
+				<tr>
+					<th>商品番号</th>
+					<td><input name="pid" type="text" class="width-middle" th:value="*{pid}">
+						<span th:if="${#fields.hasErrors('pid')}" th:errors="*{pid}"></span>
+					</td>
+				</tr>
+				<tr>
+					<th>更新する単価</th>
+					<td><input name="price" type="text" class="width-middle" value="0" th:value="*{price}">
+						<span th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></span>
+					</td>
+				</tr>
+				<tr>
+					<th>更新する在庫数</th>
+					<td><input name="stock" type="text" class="width-middle" value="0" th:value="*{stock}">
+						<span th:if="${#fields.hasErrors('stock')}" th:errors="*{stock}"></span>
+					</td>
+				</tr>
+			</table>
+			<div class="controlbox">
+				<input type="submit" value="送信" class="button">
+				<input type="reset" value="リセット" class="button">
+			</div>
+		</form>
+	</div>
+
+</body>
+</html>
