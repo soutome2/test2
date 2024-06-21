@@ -23,8 +23,8 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 	@GetMapping("/test2")
 	public Test check() {
 	Test test = new Test();
-	test.setName("山田3");
-	test.setScore(100);
+	test.setName("山田");
+	test.setScore(123456789);
 	return test;
 	}
 	
