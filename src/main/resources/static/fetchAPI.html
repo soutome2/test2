@@ -1,43 +1,60 @@
 <!DOCTYPE html>
 <html lang="ja">
-	
+
 <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Fetch API Example</title>
- 
- <style>
-    /* CSS スタイルを追加 */
-    #fetchButton {
-      background-color: blue;
-      color: white;
-      padding: 10px 20px; /* ボタンの余白を指定（任意） */
-      border: none; /* ボーダーをなくす */
-      cursor: pointer; /* カーソルをポインターに変更 */
-       border-radius: 5px; /* 角を丸める */
-    }
-  </style>
-  
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Fetch API Example</title>
+
+	<style>
+		/* CSS スタイルを追加 */
+		#fetchButton {
+			background-color: blue;
+			color: white;
+			padding: 10px 20px;
+			/* ボタンの余白を指定（任意） */
+			border: none;
+			/* ボーダーをなくす */
+			cursor: pointer;
+			/* カーソルをポインターに変更 */
+			border-radius: 5px;
+			/* 角を丸める */
+		}
+	</style>
+
 </head>
 
 <body>
-	
- 	<button id="fetchButton">Fetch Data</button>
- 	<p>Fetched Data: <span id="dataDisplay"></span></p>
- 	
- <script>
-	 
- 	document.getElementById('fetchButton').addEventListener('click', () => {
- 	fetch('http://localhost:8080/test2')
- 	.then(response => response.text())
- 	.then(data => {
- 		document.getElementById('dataDisplay').textContent = data;
- 	})
- 	.catch(error => {
- 		console.error('Error:', error);
- 	});
- });
- 
- </script>
+
+	<button id="fetchButton">Fetch Data</button>
+	<p>Fetched Data: <span id="dataDisplay"></span></p><br>
+	<p>Fetched Data2: <span id="dataDisplay2"></span></p>
+
+	<script>
+		
+		document.getElementById('fetchButton').addEventListener('click', () => {
+			fetch('https://plmok.azurewebsites.net/test')
+				.then(response => response.text())
+				.then(data => {
+					document.getElementById('dataDisplay').textContent = data;
+				})
+				.catch(error => {
+					console.error('Error:', error);
+				});
+		}); 
+
+		document.getElementById('fetchButton').addEventListener('click', () => {
+			fetch('https://plmok.azurewebsites.net/test2')
+				.then(response => response.text())
+				.then(data => {
+					document.getElementById('dataDisplay2').textContent = data;
+				})
+				.catch(error => {
+					console.error('Error:', error);
+				});
+		});
+
+	</script>
 </body>
+
 </html>
