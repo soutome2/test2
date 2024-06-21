@@ -51,7 +51,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 	ObjectNode documentNode = mapper.createObjectNode();
 	documentNode.put("id", "1");
 	documentNode.put("language", "ja");
-	documentNode.put("text", "やっぱり楽しい Java");
+	documentNode.put("text", "やっぱり楽しくない、最悪 Java");
 	
 	// Add the document node to the documents array
 	analysisInputNode.putArray("documents").add(documentNode);
