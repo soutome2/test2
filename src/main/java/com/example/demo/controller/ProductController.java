@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,6 +27,7 @@ public class ProductController {
 	private final ProductRepository productRepository;
 	private final ProductService productService;
 	
+	@CrossOrigin
 	@GetMapping("/productList")
 	public ModelAndView showProductList(ModelAndView mv) {
 		List<Product> productList = productRepository.findAllByOrderByPid();
@@ -33,7 +35,7 @@ public class ProductController {
 		mv.setViewName("productList");
 		return mv;
 	}
-	
+	@CrossOrigin
 	@GetMapping("/productListfindByPriceAndStock")
 	public ModelAndView showProductFindByStockAndPrice(@RequestParam("price") Integer price, @RequestParam("stock") Integer stock, ModelAndView mv) {
 		List<Product> productList = productRepository.findByPriceAndStock(price, stock);
@@ -41,7 +43,7 @@ public class ProductController {
 		mv.setViewName("productList");
 		return mv;
 	}
-	
+	@CrossOrigin
 	@GetMapping("/productListLike")
 	public ModelAndView showProductListLike(ModelAndView mv) {
 		List<Product> productList = productRepository.findByPnameLike("%ボールペン%");
@@ -49,7 +51,7 @@ public class ProductController {
 		mv.setViewName("productList");
 		return mv;
 	}
-	
+	@CrossOrigin
 	@GetMapping("/productListLikeByPrice")
 	public ModelAndView showProductListLikeByPrice(ModelAndView mv) {
 		List<Product> productList = productRepository.findByPnameLikeOrderByPrice("%ボールペン%");
@@ -57,12 +59,12 @@ public class ProductController {
 		mv.setViewName("productList");
 		return mv;
 	}
-	
+	@CrossOrigin
 	@GetMapping("/productInputForm")
 	public String showForm(ProductInputForm productInputForm) {
 		return "productInputForm";
 	}
-	
+	@CrossOrigin
 	@PostMapping("/productResist")
 	public String regist(@ModelAttribute @Validated ProductInputForm productInputForm, BindingResult result) {
 		if(!result.hasErrors()) {
@@ -73,12 +75,12 @@ public class ProductController {
 			return "productInputForm";
 		}
 	}
-	
+	@CrossOrigin
 	@GetMapping("/productUpdateForm")
 	public String showForm(ProductUpdateForm productUpdateForm) {
 		return "productUpdateForm";
 	}
-	
+	@CrossOrigin
 	@PostMapping("/productUpdate")
 	public String update(@ModelAttribute @Validated ProductUpdateForm productUpdateForm, BindingResult result) {
 		Product originalProduct = productService.getByPid(productUpdateForm, result);
