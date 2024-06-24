@@ -1,0 +1,41 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<title>商品一覧画面</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/common.css}">
+</head>
+
+<body>
+	<h1>発注システム</h1>
+	<h2>注文詳細一覧画面</h2>
+	<div id="contents">
+		<table>
+			<tr>
+				<th>利用者ID</th>
+				<th>利用者名</th>
+				<th>注文番号</th>
+				<th>商品番号</th>
+				<th>商品名</th>
+				<th>数量</th>
+			</tr>
+			<tr th:each="orderDetail:${orderDetailList}">
+				<td th:text="${orderDetail.eid}" />
+				</td>
+				<td th:text="${orderDetail.ename}" />
+				</td>
+				<td th:text="${orderDetail.orderid}" />
+				</td>
+				<td th:text="${orderDetail.pid}" />
+				</td>
+				<td th:text="${orderDetail.pname}" />
+				</td>
+				<td th:text="${orderDetail.amount}" />
+				</td>
+			</tr>
+		</table>
+	</div>
+</body>
+
+</html>

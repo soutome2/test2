@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmls:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>利用者入力画面</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/common.css}">
+</head>
+<body>
+	<h1>発注システム</h1>
+	<h2>利用者入力画面</h2>
+	<div id="contents">
+		<p>利用者の情報を入力して下さい。</p>
+		<form action="userResist" method="post" th:object="${userInputForm}">
+			<table>
+				<tr>
+					<th>利用者ID*</th>
+					<td><input name="eid" type="text" class="width-middle" th:value="*{eid}">
+						<span th:if="${#fields.hasErrors('eid')}" th:errors="*{eid}"></span>
+					</td>
+				</tr>
+				<tr>
+					<th>利用者名*</th>
+					<td><input name="ename" type="text" class="width-middle" th:value="*{ename}">
+						<span th:if="${#fields.hasErrors('ename')}" th:errors="*{ename}"></span>
+					</td>
+				</tr>
+				<tr>
+					<th>パスワード*</th>
+					<td><input name="password" type="text" class="width-middle" th:value="*{password}">
+						<span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+					</td>
+				</tr>
+				<tr>
+					<th>メールアドレス*</th>
+					<td><input name="mailaddress" type="text" class="width-middle" th:value="*{mailaddress}">
+						<span th:if="${#fields.hasErrors('mailaddress')}" th:errors="*{mailaddress}"></span>
+					</td>
+				</tr>
+				<tr>
+					<th>部署*</th>
+					<td><input name="station" type="text" class="width-middle" th:value="*{station}">
+						<span th:if="${#fields.hasErrors('station')}" th:errors="*{station}"></span>
+					</td>
+				</tr>
+				<tr>
+					<th>郵便番号</th>
+					<td><input name="zip" type="text" class="width-middle" th:value="*{zip}">
+						<span th:if="${#fields.hasErrors('zip')}" th:errors="*{zip}"></span>
+					</td>
+				</tr>
+				<tr>
+					<th>住所</th>
+					<td><input name="address" type="text" class="width-middle" th:value="*{address}">
+						<span th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></span>
+					</td>
+				</tr>
+				<tr>
+					<th>電話番号</th>
+					<td><input name="tel" type="text" class="width-middle" th:value="*{tel}">
+						<span th:if="${#fields.hasErrors('tel')}" th:errors="*{tel}"></span>
+					</td>
+				</tr>
+				<tr>
+					<th>送信先識別</th>
+					<td><input name="sendchk" type="text" class="width-middle" value="0" th:value="*{sendchk}">
+						<span th:if="${#fields.hasErrors('sendchk')}" th:errors="*{sendchk}"></span>
+					</td>
+				</tr>
+				<tr>
+					<th>可能量</th>
+					<td><input name="possibleamt" type="text" class="width-middle" value="0" th:value="*{possibleamt}">
+						<span th:if="${#fields.hasErrors('possibleamt')}" th:errors="*{possibleamt}"></span>
+					</td>
+				</tr>
+			</table>
+			<div class="controlbox">
+				<input type="submit" value="送信" class="button">
+				<input type="reset" value="リセット" class="button">
+			</div>
+		</form>
+	</div>
+
+</body>
+</html>

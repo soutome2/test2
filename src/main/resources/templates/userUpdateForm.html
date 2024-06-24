@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmls:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>部署更新画面</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/common.css}">
+</head>
+<body>
+	<h1>発注システム</h1>
+	<h2>部署更新画面</h2>
+	<div id="contents">
+		<p>利用者の更新情報を入力して下さい。</p>
+		<form action="userUpdate" method="post" th:object="${userUpdateForm}">
+			<table>
+				<tr>
+					<th>利用者ID</th>
+					<td><input name="eid" type="text" class="width-middle" th:value="*{eid}">
+						<span th:if="${#fields.hasErrors('eid')}" th:errors="*{eid}"></span>
+					</td>
+				</tr>
+				<tr>
+					<th>更新するパスワード</th>
+					<td><input name="password" type="text" class="width-middle" value="0" th:value="*{password}">
+						<span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+						<input type="checkbox" th:field="*{chkPassword}">更新する
+					</td>
+				</tr>
+				<tr>
+					<th>更新する部署</th>
+					<td><input name="station" type="text" class="width-middle" value="0" th:value="*{station}">
+						<span th:if="${#fields.hasErrors('station')}" th:errors="*{station}"></span>
+						<input type="checkbox" th:field="*{chkStation}">更新する
+					</td>
+				</tr>
+			</table>
+			<div class="controlbox">
+				<input type="submit" value="送信" class="button">
+				<input type="reset" value="リセット" class="button">
+			</div>
+		</form>
+	</div>
+
+</body>
+</html>

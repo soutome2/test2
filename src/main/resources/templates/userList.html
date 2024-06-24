@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmls:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>利用者一覧</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/common.css}">
+</head>
+
+<body>
+	<h1>発注システム</h1>
+	<h2>利用者一覧画面</h2>
+	<div id="contents">
+		<table>
+			<tr>
+				<th>利用者ID</th>
+				<th>利用者名</th>
+				<th>パスワード</th>
+				<th>メールアドレス</th>
+				<th>部署</th>
+				<th>郵便番号</th>
+				<th>住所</th>
+				<th>電話番号</th>
+				<th>送信先識別</th>
+				<th>可能量</th>
+			</tr>
+			<tr th:each="user:${userList}">
+				<td th:text="${user.eid}"></td>
+				<td th:text="${user.ename}"></td>
+				<td th:text="${user.password}"></td>
+				<td th:text="${user.mailaddress}"></td>
+				<td th:text="${user.station}"></td>
+				<td th:text="${user.zip}"></td>
+				<td th:text="${user.address}"></td>
+				<td th:text="${user.tel}"></td>
+				<td th:text="${user.sendchk}"></td>
+				<td th:text="${user.possibleamt}"></td>
+			</tr>
+		</table>
+	</div>
+
+</body>
+
+</html>

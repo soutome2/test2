@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmls:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ログイン画面</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/common.css}">
+</head>
+<body>
+	<h1>発注システム</h1>
+	<h2>ログイン画面</h2>
+	<div id="contents">
+		<p>ログイン情報を入力して下さい。</p>
+		<form action="userOrderList" method="post" th:object="${userLoginForm}">
+			<table>
+				<tr>
+					<th>利用者ID*</th>
+					<td><input name="ename" type="text" class="width-middle" th:value="*{ename}">
+						<span th:if="${#fields.hasErrors('ename')}" th:errors="*{ename}"></span>
+					</td>
+				</tr>
+				<tr>
+					<th>パスワード*</th>
+					<td><input name="password" type="text" class="width-middle" th:value="*{password}">
+						<span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+					</td>
+				</tr>
+			</table>
+			<div class="controlbox">
+				<input type="submit" value="送信" class="button">
+				<input type="reset" value="リセット" class="button">
+			</div>
+		</form>
+	</div>
+
+</body>
+</html>
