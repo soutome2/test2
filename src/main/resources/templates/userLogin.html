@@ -13,7 +13,7 @@
 		<form action="userOrderList" method="post" th:object="${userLoginForm}">
 			<table>
 				<tr>
-					<th>利用者ID*</th>
+					<th>利用者名*</th>
 					<td><input name="ename" type="text" class="width-middle" th:value="*{ename}">
 						<span th:if="${#fields.hasErrors('ename')}" th:errors="*{ename}"></span>
 					</td>

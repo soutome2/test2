@@ -10,21 +10,17 @@
 <body>
 	<h1>発注システム</h1>
 	<h2>注文詳細一覧画面</h2>
+	<p>利用者ID: <span th:text="${origin.eid}"></p>
+	<p>利用者名: <span th:text="${origin.ename}"></p>
 	<div id="contents">
 		<table>
 			<tr>
-				<th>利用者ID</th>
-				<th>利用者名</th>
 				<th>注文番号</th>
 				<th>商品番号</th>
 				<th>商品名</th>
-				<th>数量</th>
+				<th>在庫数</th>
 			</tr>
 			<tr th:each="orderDetail:${orderDetailList}">
-				<td th:text="${orderDetail.eid}" />
-				</td>
-				<td th:text="${orderDetail.ename}" />
-				</td>
 				<td th:text="${orderDetail.orderid}" />
 				</td>
 				<td th:text="${orderDetail.pid}" />

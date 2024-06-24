@@ -86,6 +86,7 @@ public class OrderController {
 			String ename = userLoginForm.getEname();
 			List<UserOrderDetailPname> list = userOrderDetailPnameRepository.findAllByEId(ename);
 			mv.addObject("orderDetailList", list);
+			mv.addObject("origin", origin);
 			mv.setViewName("userOrderDetailList");
 			return mv;
 		} else {
