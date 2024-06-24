@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Fetch API Example</title>
+
+	<style>
+		/* CSS スタイルを追加 */
+		#fetchButton {
+			background-color: blue;
+			color: white;
+			padding: 10px 20px;
+			/* ボタンの余白を指定（任意） */
+			border: none;
+			/* ボーダーをなくす */
+			cursor: pointer;
+			/* カーソルをポインターに変更 */
+			border-radius: 5px;
+			/* 角を丸める */
+		}
+
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			margin-bottom: 20px;
+		}
+
+		table,
+		th,
+		td {
+			border: 1px solid black;
+			padding: 8px;
+			text-align: left;
+		}
+
+		th {
+			background-color: #f2f2f2;
+		}
+	</style>
+
+</head>
+
+<body>
+
+	<button id="fetchButton">Fetch Data</button>
+	<p>Get JSON: <span id="dataDisplay"></span></p>
+
+	<p>Make Table: </p>
+
+	<table id="dataTable">
+		<thead>
+			<!-- ヘッダーはJavaScriptで自動生成 -->
+		</thead>
+		<tbody>
+			<!-- JSONデータがここに挿入されます -->
+		</tbody>
+	</table>
+
+	<script>
+
+		fetch('http://localhost:8080/List')
+			.then(response => response.json())
+			.then(data => {
+
+				document.getElementById('dataDisplay').textContent = data;
+
+				// テーブルのヘッダーを取得する
+				const table = document.querySelector('#dataTable');
+				const tableHead = table.querySelector('thead');
+
+				// ヘッダーの作成
+				const headers = Object.keys(jsonData[0]);
+				const headerRow = document.createElement('tr');
+				headers.forEach(headerText => {
+					const header = document.createElement('th');
+					header.textContent = headerText;
+					headerRow.appendChild(header);
+				});
+				tableHead.appendChild(headerRow);
+
+				// データの挿入
+				const tableBody = table.querySelector('tbody');
+				jsonData.forEach(item => {
+					const row = document.createElement('tr');
+					headers.forEach(key => {
+						const cell = document.createElement('td');
+						cell.textContent = item[key];
+						row.appendChild(cell);
+					});
+					tableBody.appendChild(row);
+				});
+			})
+			.catch(error => console.error('Fetch error:', error));
+
+	</script>
+</body>
+
+</html>
