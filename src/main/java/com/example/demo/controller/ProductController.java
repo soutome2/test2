@@ -23,10 +23,10 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 @Controller
 public class ProductController {
-	
+
 	private final ProductRepository productRepository;
 	private final ProductService productService;
-	
+
 	@CrossOrigin
 	@GetMapping("/productList")
 	public ModelAndView showProductList(ModelAndView mv) {
@@ -35,14 +35,17 @@ public class ProductController {
 		mv.setViewName("productList");
 		return mv;
 	}
+
 	@CrossOrigin
 	@GetMapping("/productListfindByPriceAndStock")
-	public ModelAndView showProductFindByStockAndPrice(@RequestParam("price") Integer price, @RequestParam("stock") Integer stock, ModelAndView mv) {
+	public ModelAndView showProductFindByStockAndPrice(@RequestParam("price") Integer price,
+			@RequestParam("stock") Integer stock, ModelAndView mv) {
 		List<Product> productList = productRepository.findByPriceAndStock(price, stock);
 		mv.addObject("productList", productList);
 		mv.setViewName("productList");
 		return mv;
 	}
+
 	@CrossOrigin
 	@GetMapping("/productListLike")
 	public ModelAndView showProductListLike(ModelAndView mv) {
@@ -51,6 +54,7 @@ public class ProductController {
 		mv.setViewName("productList");
 		return mv;
 	}
+
 	@CrossOrigin
 	@GetMapping("/productListLikeByPrice")
 	public ModelAndView showProductListLikeByPrice(ModelAndView mv) {
@@ -59,15 +63,17 @@ public class ProductController {
 		mv.setViewName("productList");
 		return mv;
 	}
+
 	@CrossOrigin
 	@GetMapping("/productInputForm")
 	public String showForm(ProductInputForm productInputForm) {
 		return "productInputForm";
 	}
+
 	@CrossOrigin
 	@PostMapping("/productResist")
 	public String regist(@ModelAttribute @Validated ProductInputForm productInputForm, BindingResult result) {
-		if(!result.hasErrors()) {
+		if (!result.hasErrors()) {
 			Product product = productInputForm.getEntity();
 			productRepository.saveAndFlush(product);
 			return "redirect:/productList";
@@ -75,17 +81,19 @@ public class ProductController {
 			return "productInputForm";
 		}
 	}
+
 	@CrossOrigin
 	@GetMapping("/productUpdateForm")
 	public String showForm(ProductUpdateForm productUpdateForm) {
 		return "productUpdateForm";
 	}
+
 	@CrossOrigin
 	@PostMapping("/productUpdate")
 	public String update(@ModelAttribute @Validated ProductUpdateForm productUpdateForm, BindingResult result) {
 		Product originalProduct = productService.getByPid(productUpdateForm, result);
-		
-		if(!result.hasErrors()) {
+
+		if (!result.hasErrors()) {
 			Product newProduct = productUpdateForm.getEntity();
 			newProduct.setPname(originalProduct.getPname());
 			newProduct.setCategory(originalProduct.getCategory());
@@ -95,5 +103,4 @@ public class ProductController {
 			return "productUpdateForm";
 		}
 	}
-
 }
