@@ -60,6 +60,15 @@ public class UserService {
         return optionalUser.get();
 
 	}
-	/**/
+	
+	public void check(UserUpdateForm userupdateform, BindingResult result) {
+		boolean ckPassupDate =  userupdateform.isChkPassword();
+		String txstPass = userupdateform.getPassword();
+		
+		if(ckPassupDate && txstPass != "") {
+			
+		}
+	}
+	
 
 }
