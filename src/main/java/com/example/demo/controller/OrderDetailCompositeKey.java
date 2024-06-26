@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+/*package com.example.demo.controller;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
@@ -16,4 +16,4 @@ public class OrderDetailCompositeKey {
 	@Column(name = "pid")
 	private String pid;
 
-}
+}*/
